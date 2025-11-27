@@ -27,8 +27,8 @@ export default function Footer() {
               </div>
               <div>
                 <div className="text-xs text-gray-400 uppercase tracking-wide">24/7 Notfall</div>
-                <a href="tel:+4917664692948" className="text-lg font-bold hover:text-accent-orange transition-colors">
-                  +49 176 64692948
+                <a href="tel:+491722363102" className="text-lg font-bold hover:text-accent-orange transition-colors">
+                  01722363102
                 </a>
               </div>
             </div>
@@ -39,12 +39,12 @@ export default function Footer() {
               <div>
                 <div className="text-xs text-gray-400 uppercase tracking-wide">WhatsApp</div>
                 <a 
-                  href="https://wa.me/4917664692948" 
+                  href="https://wa.me/491722363102" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-lg font-bold hover:text-green-400 transition-colors"
                 >
-                  +49 176 64692948
+                  01722363102
                 </a>
               </div>
             </div>
