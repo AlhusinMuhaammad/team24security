@@ -21,7 +21,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-24 md:h-28">
           <Link href="/" className="flex items-center gap-4 hover:opacity-90 transition-opacity">
             {!logoError ? (
-              <div className="relative h-20 w-auto md:h-40 md:w-auto flex-shrink-0">
+              <div className="relative h-16 w-auto md:h-32 md:w-auto flex-shrink-0">
                 <Image
                   src="/images/logo-main.png"
                   alt="Team24Security Logo"
@@ -33,11 +33,11 @@ export default function Header() {
                 />
               </div>
             ) : null}
-            <span className="hidden md:inline text-2xl md:text-3xl font-bold">
+            <span className="hidden md:inline text-xl md:text-2xl font-bold">
               Team24<span className="text-accent-orange">Security</span>
             </span>
             {logoError && (
-              <span className="md:hidden text-xl font-bold">
+              <span className="md:hidden text-lg font-bold">
                 Team24<span className="text-accent-orange">Security</span>
               </span>
             )}
