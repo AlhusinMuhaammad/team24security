@@ -71,7 +71,7 @@ export default function Footer() {
             <Link href="/" className="flex items-center gap-0 mb-4 hover:opacity-90 transition-opacity -ml-6 md:-ml-12">
               {!logoError ? (
                 <>
-                  <div className="relative h-20 w-auto md:h-40 md:w-auto flex-shrink-0">
+                  <div className="relative h-16 w-auto md:h-32 md:w-auto flex-shrink-0">
                     <Image
                       src="/images/logo-main.png"
                       alt="Team24Security Logo"
@@ -81,10 +81,10 @@ export default function Footer() {
                       onError={() => setLogoError(true)}
                     />
                   </div>
-                  <span className="hidden md:inline text-2xl md:text-3xl font-bold text-white">
+                  <span className="hidden md:inline text-xl md:text-2xl font-bold text-white">
                     Team24<span className="text-accent-orange">Security</span>
                   </span>
-                  <span className="md:hidden text-xl font-bold text-white">
+                  <span className="md:hidden text-lg font-bold text-white">
                     Team24<span className="text-accent-orange">Security</span>
                   </span>
                 </>
