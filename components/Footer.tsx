@@ -68,28 +68,36 @@ export default function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Mission Statement */}
           <div>
-            <Link href="/" className="flex items-center gap-4 mb-4 hover:opacity-90 transition-opacity">
+            <Link href="/" className="flex items-center gap-0 mb-4 hover:opacity-90 transition-opacity -ml-6 md:-ml-12">
               {!logoError ? (
-                <div className="relative h-16 w-auto md:h-20 md:w-auto flex-shrink-0">
-                  <Image
-                    src="/images/logo-black.png"
-                    alt="Team24Security Logo"
-                    width={200}
-                    height={80}
-                    className="object-contain h-full w-auto"
-                    onError={() => setLogoError(true)}
-                  />
-                </div>
+                <>
+                  <div className="relative h-20 w-auto md:h-40 md:w-auto flex-shrink-0">
+                    <Image
+                      src="/images/logo-main.png"
+                      alt="Team24Security Logo"
+                      width={560}
+                      height={224}
+                      className="object-contain h-full w-auto"
+                      onError={() => setLogoError(true)}
+                    />
+                  </div>
+                  <span className="hidden md:inline text-2xl md:text-3xl font-bold text-white">
+                    Team24<span className="text-accent-orange">Security</span>
+                  </span>
+                  <span className="md:hidden text-xl font-bold text-white">
+                    Team24<span className="text-accent-orange">Security</span>
+                  </span>
+                </>
               ) : (
-                <h3 className="text-2xl font-bold">
+                <h3 className="text-2xl font-bold text-white">
                   Team24<span className="text-accent-orange">Security</span>
                 </h3>
               )}
             </Link>
             <p className="text-gray-400 mb-6 leading-relaxed">
-              Seit über einem Jahrzehnt schützen wir Unternehmen, Veranstaltungen und Personen 
-              in Deutschland. Mit qualifiziertem Personal, modernster Technologie und 
-              präzisen Sicherheitskonzepten gewährleisten wir höchste Standards.
+              Wir sind ein frisches Sicherheitsunternehmen, das sich darauf konzentriert, Unternehmen, 
+              Veranstaltungen und Personen in Deutschland zu schützen. Mit qualifiziertem Personal, 
+              modernster Technologie und präzisen Sicherheitskonzepten gewährleisten wir höchste Standards.
             </p>
             <div className="space-y-2 text-sm text-gray-500">
               <div className="flex items-center gap-2">
