@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000'
+
 export default function KontaktPage() {
   const [formData, setFormData] = useState({
     name: '',
@@ -9,11 +11,31 @@ export default function KontaktPage() {
     phone: '',
     message: '',
   })
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
+  const [errorMessage, setErrorMessage] = useState('')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    alert('Vielen Dank für Ihre Nachricht! Wir werden uns in Kürze bei Ihnen melden.')
-    setFormData({ name: '', email: '', phone: '', message: '' })
+    setStatus('sending')
+    setErrorMessage('')
+    try {
+      const res = await fetch(`${API_URL}/api/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+      const data = await res.json()
+      if (!res.ok) {
+        setStatus('error')
+        setErrorMessage(data.error || 'Etwas ist schiefgelaufen.')
+        return
+      }
+      setStatus('success')
+      setFormData({ name: '', email: '', phone: '', message: '' })
+    } catch {
+      setStatus('error')
+      setErrorMessage('Verbindung zum Server fehlgeschlagen. Bitte später erneut versuchen.')
+    }
   }
 
   return (
@@ -168,11 +190,22 @@ export default function KontaktPage() {
                   />
                 </div>
 
+                {status === 'success' && (
+                  <div className="p-4 rounded-lg bg-green-100 text-green-800 border border-green-200">
+                    Vielen Dank für Ihre Nachricht! Wir werden uns in Kürze bei Ihnen melden.
+                  </div>
+                )}
+                {status === 'error' && (
+                  <div className="p-4 rounded-lg bg-red-100 text-red-800 border border-red-200">
+                    {errorMessage}
+                  </div>
+                )}
                 <button
                   type="submit"
-                  className="w-full bg-accent-orange text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-opacity-90 transition-colors"
+                  disabled={status === 'sending'}
+                  className="w-full bg-accent-orange text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-opacity-90 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
                 >
-                  Nachricht senden
+                  {status === 'sending' ? 'Wird gesendet…' : 'Nachricht senden'}
                 </button>
               </form>
             </div>
